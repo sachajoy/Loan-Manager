@@ -1,0 +1,9 @@
+{% extends "base_template.html" %}
+{% block content %}
+<h1>Districts</h1>
+<ul>
+    {% for district in district_list %}
+    <li> {{ district.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -5,5 +5,9 @@ from .. import models
 
 
 class DistrictCreateView(CreateView):
+    fields = ['name']
     model = models.District
 
+
+class DistrictListView(ListView):
+    models = models.District
