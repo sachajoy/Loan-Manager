@@ -11,3 +11,12 @@ class DistrictCreateView(CreateView):
 
 class DistrictListView(ListView):
     model = models.District
+
+
+class TalukaCreateView(CreateView):
+    fields = ['district_id', 'name']
+    model = models.Taluka
+
+
+class TalukaListView(ListView):
+    model = models.Taluka

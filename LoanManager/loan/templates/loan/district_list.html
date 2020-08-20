@@ -6,4 +6,5 @@
     <li> {{ district.name }}</li>
     {% endfor %}
 </ul>
+<a href="{% url 'loan:create-district' %}" class="btn btn-primary">Create district</a>
 {% endblock %}

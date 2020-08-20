@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+{% block content %}
+<h1>Taluka</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>District Name</th>
+        <th>Taluka Name</th>
+    </tr>
+    {% for taluka in taluka_list %}
+    <tr>
+        <td>{{taluka.district_id}}</td>
+        <td>{{taluka.name}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'loan:create-taluka' %}" class="btn btn-primary">Create Taluka</a>
+{% endblock %}

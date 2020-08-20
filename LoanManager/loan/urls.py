@@ -10,4 +10,10 @@ urlpatterns = [
     path('list-district',
          address.DistrictListView.as_view(),
          name = 'list-district'),
+    path('create-taluka',
+         address.TalukaCreateView.as_view(),
+         name='create-taluka'),
+    path('list-taluka',
+         address.TalukaListView.as_view(),
+         name='list-taluka'),
 ]
