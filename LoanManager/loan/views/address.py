@@ -10,4 +10,4 @@ class DistrictCreateView(CreateView):
 
 
 class DistrictListView(ListView):
-    models = models.District
+    model = models.District
