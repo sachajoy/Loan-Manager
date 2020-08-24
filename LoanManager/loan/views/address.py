@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic import (CreateView, ListView)
 
 
@@ -17,9 +15,27 @@ class DistrictListView(ListView):
 
 
 class TalukaCreateView(CreateView):
-    fields = ['district_id', 'name']
+    form_class = model_forms.TalukaForm
     model = models.Taluka
 
 
 class TalukaListView(ListView):
     model = models.Taluka
+
+
+class VillageCreateView(CreateView):
+    form_class = model_forms.VillageForm
+    model = models.Village
+
+
+class VillageListView(ListView):
+    model = models.Village
+
+
+class FaliyaCreateView(CreateView):
+    form_class = model_forms.FaliyaForm
+    model = models.Faliya
+
+
+class FaliyaListView(ListView):
+    model = models.Faliya
