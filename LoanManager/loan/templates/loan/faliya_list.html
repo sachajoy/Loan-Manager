@@ -27,9 +27,9 @@
                     <tbody>
                     {% for faliya in faliya_list %}
                         <tr>
-                            <td>{{ faliya.village_id.taluka_id.district_id }}</td>
-                            <td> {{ faliya.village_id.taluka_id }}</td>
-                            <td> {{ faliya.village_id }}</td>
+                            <td>{{ faliya.village_id.taluka_id.district_id.name }}</td>
+                            <td> {{ faliya.village_id.taluka_id.name }}</td>
+                            <td> {{ faliya.village_id.name }}</td>
                             <td>{{ faliya.name }}</td>
                         </tr>
                     {% endfor %}
