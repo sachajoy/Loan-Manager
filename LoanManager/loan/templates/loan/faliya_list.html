@@ -30,7 +30,9 @@
                             <td>{{ faliya.village_id.taluka_id.district_id.name }}</td>
                             <td> {{ faliya.village_id.taluka_id.name }}</td>
                             <td> {{ faliya.village_id.name }}</td>
-                            <td>{{ faliya.name }}</td>
+                            <td>
+                                <a href="{% url 'loan:update-faliya' pk=faliya.id %}" >{{ faliya.name }}</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

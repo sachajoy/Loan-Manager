@@ -42,9 +42,38 @@ class Faliya(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
-        return "{} - {}".format(self.name,
-                                          self.village_id,
-                                          )
+        return "{} - {}".format(self.name, self.village_id)
 
     def get_absolute_url(self):
         return reverse('loan:list-faliya')
+
+class Firm(models.Model):
+    name = models.CharField(max_length=255)
+    abv = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.abv
+
+class Client(models.Model):
+    firm_id = models.ForeignKey(Firm, on_delete=models.CASCADE)
+    challan_no = models.IntegerField(unique=True)
+    file_no = models.CharField(max_length=15, unique=True)
+    fname = models.CharField(max_length=50)
+    mname = models.CharField(max_length=50, null=True)
+    lname = models.CharField(max_length=50)
+    addr = models.CharField(max_length=255)
+    faliya = models.ForeignKey(Faliya, on_delete=models.CASCADE)
+    mob_no = models.CharField(max_length=11)
+    gtr = models.CharField(max_length=100)
+    gtr_mob_no = models.CharField(max_length=11)
+
+    def __str__(self):
+        return "{} {}, {}".format(self.fname, self.lname, self.mob_no)
+
+    def get_absolute_url(self):
+        return reverse('loan:client-list')
+
+
+
+
+

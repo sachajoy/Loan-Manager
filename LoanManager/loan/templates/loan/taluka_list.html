@@ -24,7 +24,9 @@
                     {% for taluka in taluka_list %}
                         <tr>
                             <td>{{ taluka.district_id }}</td>
-                            <td> {{ taluka.name }}</td>
+                            <td>
+                                <a href="{% url 'loan:update-taluka' pk=taluka.id %}" >{{ taluka.name }}</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

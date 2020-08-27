@@ -23,7 +23,7 @@
                     <tbody>
                     {% for district in district_list %}
                         <tr>
-                            <td>{{ district.name }}</td>
+                            <td><a href="{% url 'loan:update-district' pk=district.id %}" >{{ district.name }}</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

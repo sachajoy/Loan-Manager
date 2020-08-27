@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable">
                     <thead>
                     <tr>
                         <th>District Name</th>
@@ -27,7 +27,9 @@
                         <tr>
                             <td>{{ village.taluka_id.district_id.name }}</td>
                             <td> {{ village.taluka_id.name }}</td>
-                            <td> {{ village.name }}</td>
+                            <td>
+                                <a href="{% url 'loan:update-village' pk=village.id %}"> {{ village.name }}</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
