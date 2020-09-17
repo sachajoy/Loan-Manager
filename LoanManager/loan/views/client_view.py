@@ -1,8 +1,12 @@
-from django.views.generic import (CreateView, ListView,
-                                  UpdateView, DetailView)
+from django.views.generic import (CreateView, DetailView, ListView, UpdateView)
 
 from .. import models
 from ..forms import client_forms
+
+
+class FirmCreateView(CreateView):
+    fields = ['name', 'abv']
+    model = models.Firm
 
 
 class ClientCreateView(CreateView):

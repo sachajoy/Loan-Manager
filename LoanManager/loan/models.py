@@ -47,12 +47,17 @@ class Faliya(models.Model):
     def get_absolute_url(self):
         return reverse('loan:list-faliya')
 
+
 class Firm(models.Model):
     name = models.CharField(max_length=255)
     abv = models.CharField(max_length=10)
 
     def __str__(self):
         return self.abv
+
+    def get_absolute_url(self):
+        return reverse('loan:create-client')
+
 
 class Client(models.Model):
     firm_id = models.ForeignKey(Firm, on_delete=models.CASCADE)
@@ -72,8 +77,3 @@ class Client(models.Model):
 
     def get_absolute_url(self):
         return reverse('loan:client-list')
-
-
-
-
-

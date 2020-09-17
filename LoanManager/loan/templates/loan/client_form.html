@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+{% block content %}
+<form method="post" class="user">
+    {% csrf_token %}
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            {{form.fname}}
+        </div>
+    </div>
+
+    <input class="btn btn-success" type="submit" value="Save">
+</form>
+{% endblock %}
