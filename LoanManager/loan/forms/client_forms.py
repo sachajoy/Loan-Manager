@@ -26,6 +26,11 @@ class ClientForm(ModelForm):
             'gtr_mob_no': forms.TextInput(attrs={'placeholder': 'Grauntor Mob No'})
         }
 
+    def form_invalid(self, form):
+        """If the form is invalid, render the invalid form."""
+        return self.render_to_response(self.get_context_data(form=form))
+
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for fields_name, fields in self.fields.items():

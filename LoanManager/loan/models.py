@@ -72,6 +72,8 @@ class Client(models.Model):
     gtr = models.CharField(max_length=100)
     gtr_mob_no = models.CharField(max_length=11)
 
+    class Meta:
+        unique_together = ('firm_id', 'challan_no', 'file_no')
     def __str__(self):
         return "{} {}, {}".format(self.fname, self.lname, self.mob_no)
 
