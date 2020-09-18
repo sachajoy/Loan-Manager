@@ -61,7 +61,7 @@ class Firm(models.Model):
 
 class Client(models.Model):
     firm_id = models.ForeignKey(Firm, on_delete=models.CASCADE)
-    challan_no = models.IntegerField(unique=True)
+    challan_no = models.IntegerField(unique=True, verbose_name='Challan Number')
     file_no = models.CharField(max_length=15, unique=True)
     fname = models.CharField(max_length=50)
     mname = models.CharField(max_length=50, null=True)

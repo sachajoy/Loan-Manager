@@ -29,16 +29,17 @@ class TalukaForm(ModelForm):
 
 
 class VillageForm(ModelForm):
-    class Meta:
-        model = models.Village
-        fields = ['taluka_id', 'name']
+    class VillageForm(ModelForm):
+        class Meta:
+            model = models.Village
+            fields = ['taluka_id', 'name']
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for fields_name, fields in self.fields.items():
-            fields.widget.attrs.update(
-                {'class': 'form-control form-control-user'}
-            )
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            for fields_name, fields in self.fields.items():
+                fields.widget.attrs.update(
+                    {'class': 'form-control form-control-user'}
+                )
 
 
 
