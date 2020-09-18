@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base_template.html" %}
+{% block content %}
+    <a href="{% url 'loan:create-client' %}" class="btn btn-primary">Create Client</a>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Client List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Firm Name</th>
+                        <th>Challan Number</th>
+                        <th>File Number</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Mobile No</th>
+                        <th>GTR</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Firm Name</th>
+                        <th>Challan Number</th>
+                        <th>File Number</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Mobile No</th>
+                        <th>GTR</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for client in client_list %}
+                        <a href="{% url 'loan:create-client' %}">
+                            <tr>
+                                <td>{{ client.firm_id | upper }}</td>
+                                <td>{{ client.challan_no | upper }}</td>
+                                <td>{{ client.file_no | upper }}</td>
+                                <td>{{ client.fname  | upper }}
+                                    {{ client.mname | upper }}
+                                    {{ client.lname | upper }}</td>
+                                <td>{{ client.faliya | upper }}</td>
+                                <td>{{ client.mob_no }}</td>
+                                <td>{{ client.gtr | upper }}</td>
 
-</body>
-</html>
+                            </tr>
+                        </a>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

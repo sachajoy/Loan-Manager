@@ -61,8 +61,8 @@ class Firm(models.Model):
 
 class Client(models.Model):
     firm_id = models.ForeignKey(Firm, on_delete=models.CASCADE)
-    challan_no = models.IntegerField(unique=True, verbose_name='Challan Number')
-    file_no = models.CharField(max_length=15, unique=True)
+    challan_no = models.IntegerField()
+    file_no = models.CharField(max_length=15)
     fname = models.CharField(max_length=50)
     mname = models.CharField(max_length=50, null=True)
     lname = models.CharField(max_length=50)
@@ -76,4 +76,4 @@ class Client(models.Model):
         return "{} {}, {}".format(self.fname, self.lname, self.mob_no)
 
     def get_absolute_url(self):
-        return reverse('loan:client-list')
+        return reverse('loan:list-client')
