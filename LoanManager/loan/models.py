@@ -95,14 +95,14 @@ class Vehical(models.Model):
 
 
 class Loan(models.Model):
-    client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
-    vehical_id = models.ForeignKey(Vehical, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    vehical = models.ForeignKey(Vehical, on_delete=models.CASCADE)
     reg_no = models.CharField(max_length=50, unique=True)
     agrmnt_date = models.DateField()
     chasis_no = models.CharField(max_length=50)
     engine_no = models.CharField(max_length=50)
-    princple_amt = models.IntegerField()
-    interst_rate = models.FloatField()
+    principle_amt = models.IntegerField()
+    intrest_rate = models.FloatField()
     emi_amt = models.FloatField()
     months = models.IntegerField()
 

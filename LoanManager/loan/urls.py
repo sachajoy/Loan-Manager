@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import address, client_view, views
+from .views import (address, client_view,
+                    views, loan_views)
 
 app_name = 'loan'
 urlpatterns = [
@@ -50,6 +51,9 @@ urlpatterns = [
     path('client-detial/<int:pk>',
          client_view.ClientDetailView.as_view(),
          name='detial-client'),
+    path('client/<int:client_pk>/create-loan',
+         loan_views.LoanCreateView.as_view(),
+         name='create-loan'),
     path('create-firm',
          client_view.FirmCreateView.as_view(),
          name='create-firm'),

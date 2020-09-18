@@ -7,13 +7,13 @@ from .. import models
 class ClientForm(ModelForm):
     class Meta:
         model = models.Client
-        fields = ('fname', 'firm_id',
+        fields = ['fname', 'firm_id',
                   'challan_no', 'file_no',
                   'mname', 'lname',
                   'addr', 'faliya',
                   'mob_no', 'gtr',
                   'gtr_mob_no'
-                  )
+                  ]
         widgets = {
             'challan_no': forms.TextInput(attrs={'placeholder': 'Challan Number'}),
             'file_no': forms.TextInput(attrs={'placeholder': 'File Number'}),
@@ -25,11 +25,6 @@ class ClientForm(ModelForm):
             'gtr': forms.TextInput(attrs={'placeholder': 'Grauntor Name'}),
             'gtr_mob_no': forms.TextInput(attrs={'placeholder': 'Grauntor Mob No'})
         }
-
-    def form_invalid(self, form):
-        """If the form is invalid, render the invalid form."""
-        return self.render_to_response(self.get_context_data(form=form))
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

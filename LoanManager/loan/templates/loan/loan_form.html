@@ -1,0 +1,32 @@
+{% extends "base_template.html" %}
+{% block content %}
+
+    <div class="col-lg-8 align-self-center">
+        <div class="card mb-12">
+            <div class="card-header">
+                  <h6 class="m-0 font-weight-bold ">Add Loan  - {{ client.fname }} {{ client.lname}}</h6>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="btn btn-success" type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
