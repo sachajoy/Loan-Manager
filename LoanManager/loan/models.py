@@ -74,8 +74,54 @@ class Client(models.Model):
 
     class Meta:
         unique_together = ('firm_id', 'challan_no', 'file_no')
+
     def __str__(self):
         return "{} {}, {}".format(self.fname, self.lname, self.mob_no)
 
     def get_absolute_url(self):
         return reverse('loan:list-client')
+
+
+class Vehical(models.Model):
+    company = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    model = models.CharField(max_length=255)
+
+    class Meta:
+        unique_together = ('company', 'name')
+
+    def __str__(self):
+        return self.name + ", " + self.company
+
+
+class Loan(models.Model):
+    client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
+    vehical_id = models.ForeignKey(Vehical, on_delete=models.CASCADE)
+    reg_no = models.CharField(max_length=50, unique=True)
+    agrmnt_date = models.DateField()
+    chasis_no = models.CharField(max_length=50)
+    engine_no = models.CharField(max_length=50)
+    princple_amt = models.IntegerField()
+    interst_rate = models.FloatField()
+    emi_amt = models.FloatField()
+    months = models.IntegerField()
+
+    class Meta:
+        unique_together = ('reg_no', 'chasis_no', 'engine_no')
+
+    def __str__(self):
+        return "{} - {}".format(self.vehical_id, self.client_id)
+
+
+class Emi(models.Model):
+    client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
+    loan_id = models.ForeignKey(Loan, on_delete=models.CASCADE)
+    amt = models.FloatField()
+    due_date = models.DateField()
+    paid_data = models.DateField(null=True)
+    receipt_no = models.CharField(max_length=20, null=True)
+    remarks = models.TextField(null=True)
+    penalty = models.IntegerField()
+
+    def __str__(self):
+        return "{} - {}".format(self.due_date, self.loan_id)
