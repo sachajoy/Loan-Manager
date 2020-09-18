@@ -32,20 +32,19 @@
                     </tfoot>
                     <tbody>
                     {% for client in client_list %}
-                        <a href="{% url 'loan:create-client' %}">
-                            <tr>
-                                <td>{{ client.firm_id | upper }}</td>
-                                <td>{{ client.challan_no | upper }}</td>
-                                <td>{{ client.file_no | upper }}</td>
-                                <td>{{ client.fname  | upper }}
-                                    {{ client.mname | upper }}
-                                    {{ client.lname | upper }}</td>
-                                <td>{{ client.faliya | upper }}</td>
-                                <td>{{ client.mob_no }}</td>
-                                <td>{{ client.gtr | upper }}</td>
+                        <tr>
+                            <td>{{ client.firm_id | upper }}</td>
+                            <td>{{ client.challan_no | upper }}</td>
+                            <td>{{ client.file_no | upper }}</td>
+                            <td><a href="{% url 'loan:detial-client' pk=client.id %}">{{ client.fname | upper }}
+                                {{ client.mname | upper }}
+                                {{ client.lname| upper }}</a>
+                            </td>
+                            <td>{{ client.faliya | upper }}</td>
+                            <td>{{ client.mob_no | upper }}</td>
+                            <td>{{ client.gtr | upper }}</td>
 
-                            </tr>
-                        </a>
+                        </tr>
                     {% endfor %}
                     </tbody>
                 </table>

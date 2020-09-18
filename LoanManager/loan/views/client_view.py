@@ -24,4 +24,5 @@ class ClientListView(ListView):
 
 
 class ClientDetailView(DetailView):
+    context_object_name = 'client'
     model = models.Client
