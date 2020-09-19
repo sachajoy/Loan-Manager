@@ -18,7 +18,7 @@ class LoanForm(ModelForm):
             'reg_no': forms.TextInput(attrs={'placeholder': 'Registration Number'}),
             'chasis_no': forms.TextInput(attrs={'placeholder': 'Chasis Number'}),
             'engine_no': forms.TextInput(attrs={'placeholder': 'Engine Number'}),
-            'princple_amt': forms.NumberInput(attrs={'placeholder': 'Engine Number'}),
+            'principle_amt': forms.NumberInput(attrs={'placeholder': 'Engine Number'}),
             'agrmnt_date': forms.DateInput(attrs={'type': 'date'}, )
         }
 

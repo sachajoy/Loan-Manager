@@ -6,6 +6,7 @@ from .views import (address, client_view,
 app_name = 'loan'
 urlpatterns = [
     path('', views.index, name='index'),
+    # DISTRICT
     path('create-district',
          address.DistrictCreateView.as_view(),
          name='create-district'),
@@ -15,6 +16,7 @@ urlpatterns = [
     path('list-district',
          address.DistrictListView.as_view(),
          name='list-district'),
+    # TALUKA
     path('create-taluka',
          address.TalukaCreateView.as_view(),
          name='create-taluka'),
@@ -24,6 +26,7 @@ urlpatterns = [
     path('list-taluka',
          address.TalukaListView.as_view(),
          name='list-taluka'),
+    # VILLAGE
     path('create-village',
          address.VillageCreateView.as_view(),
          name='create-village'),
@@ -33,6 +36,7 @@ urlpatterns = [
     path('list-village',
          address.VillageListView.as_view(),
          name='list-village'),
+    # FALIYA
     path('create-faliya',
          address.FaliyaCreateView.as_view(),
          name='create-faliya'),
@@ -42,6 +46,7 @@ urlpatterns = [
     path('list-faliya',
          address.FaliyaListView.as_view(),
          name='list-faliya'),
+    # CLIENT
     path('create-client',
          client_view.ClientCreateView.as_view(),
          name='create-client'),
@@ -51,9 +56,13 @@ urlpatterns = [
     path('client-detial/<int:pk>',
          client_view.ClientDetailView.as_view(),
          name='detial-client'),
+    # LOAN
     path('client/<int:client_pk>/create-loan',
          loan_views.LoanCreateView.as_view(),
          name='create-loan'),
+    path('client/<int:client_pk>/detail-loan/<int:pk>',
+         loan_views.LoanDetailView.as_view(),
+         name='loan-detail'),
     path('create-firm',
          client_view.FirmCreateView.as_view(),
          name='create-firm'),

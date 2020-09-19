@@ -112,6 +112,9 @@ class Loan(models.Model):
     def __str__(self):
         return "{} - {}".format(self.vehical_id, self.client_id)
 
+    def get_absolute_url(self):
+        return reverse('loan:loan-detail')
+
 
 class Emi(models.Model):
     client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
