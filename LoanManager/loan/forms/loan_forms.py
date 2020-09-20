@@ -19,7 +19,7 @@ class LoanForm(ModelForm):
             'chasis_no': forms.TextInput(attrs={'placeholder': 'Chasis Number'}),
             'engine_no': forms.TextInput(attrs={'placeholder': 'Engine Number'}),
             'principle_amt': forms.NumberInput(attrs={'placeholder': 'Engine Number'}),
-            'agrmnt_date': forms.DateInput(attrs={'type': 'date'}, )
+            'agrmnt_date': forms.DateInput(attrs={'type': 'date'})
         }
 
         def __init__(self, *args, **kwargs):

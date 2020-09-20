@@ -49,5 +49,12 @@
         </tr>
     </table>
     <a href="{% url 'loan:create-loan' client_pk=client.pk %}" class="btn btn-info">Add Loan</a>
+    {% for loan in client.loan_set.all %}
+        <a
+                href="{% url 'loan:loan-detail' client_pk=client.pk pk=loan.pk %}"
+                class="btn btn-facebook">
+            {{ loan.vehical }}
+        </a>
+    {% endfor %}
 
 {% endblock %}

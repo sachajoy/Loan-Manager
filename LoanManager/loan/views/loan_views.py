@@ -22,7 +22,11 @@ class LoanCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('loan:loan-detail',
-                            kwargs={'client_pk': self.kwargs.get('client_pk'), 'pk': self.object.pk})
+                            kwargs={
+                                'client_pk': self.kwargs.get('client_pk'),
+                                'pk': self.object.pk
+                            }
+                            )
 
 
 class LoanDetailView(DetailView):

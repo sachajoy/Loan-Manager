@@ -8,7 +8,7 @@
             <td>Challan No</td>
             <th>{{ client.challan_no | upper }}</th>
             <td>Reg No.</td>
-            <th></th>
+            <th>{{ loan_details.reg_no }}</th>
         </tr>
         <tr>
             <td>Name</td>
@@ -16,43 +16,44 @@
                 {{ client.mname | upper }}
                 {{ client.mname  | upper }}</th>
             <td>AGRMNT DATE</td>
-            <th></th>
+            <th>{{ loan_details.agrmnt_date }}</th>
         </tr>
         <tr>
             <td rowspan="2">ADDRESS</td>
             <th rowspan="2" colspan="3">{{ client.addr | upper }}, {{ client.faliya | upper }}</th>
             <td>MODEL</td>
-            <th></th>
+            <th>{{ loan_details.vehical }}</th>
         </tr>
         <tr>
 
             <td>CHASIS NO.</td>
-            <th></th>
+            <th>{{ loan_details.chasis_no }}</th>
         </tr>
         <tr>
             <td>MOBILE NO.</td>
             <th colspan="3">{{ client.mob_no | upper }}</th>
             <td>ENGINE NO</td>
-            <th></th>
+            <th>{{ loan_details.engine_no }}</th>
         </tr>
         <tr>
             <td>GTR</td>
             <th colspan="3">{{ client.gtr | upper }}</th>
             <td>INSTALLMENTS</td>
-            <th> EMI : 3090 | 50</th>
+            <th> EMI : {{ loan_details.emi_amt }} | {{ loan_details.months }}</th>
         </tr>
         <tr>
             <td>GTR MOB NO</td>
             <th colspan="3">{{ client.gtr_mob_no | upper }}</th>
             <td>LOAN AMT</td>
-            <th></th>
+            <th>{{ loan_details.principle_amt }}</th>
         </tr>
     </table>
     <a href="{% url 'loan:create-loan' client_pk=client.pk %}" class="btn btn-info">Add Loan</a>
-    <table>
-    <tr>
-        <td>{{ loan_details.vehical }}</td>
-    </tr>
-    </table>
-
+{% for loan in client.loan_set.all %}
+        <a
+                href="{% url 'loan:loan-detail' client_pk=client.pk pk=loan.pk %}"
+                class="btn btn-facebook">
+            {{ loan.vehical }}
+        </a>
+    {% endfor %}
 {% endblock %}
