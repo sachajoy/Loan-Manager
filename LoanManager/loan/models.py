@@ -79,7 +79,7 @@ class Client(models.Model):
         return "{} {}, {}".format(self.fname, self.lname, self.mob_no)
 
     def get_absolute_url(self):
-        return reverse('loan:list-client')
+        return reverse('loan:detial-client', kwargs={'pk': self.id})
 
 
 class Vehical(models.Model):
@@ -97,7 +97,7 @@ class Vehical(models.Model):
 class Loan(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
     vehical = models.ForeignKey(Vehical, on_delete=models.CASCADE)
-    reg_no = models.CharField(max_length=50, unique=True)
+    reg_no = models.CharField(max_length=50)
     agrmnt_date = models.DateField()
     chasis_no = models.CharField(max_length=50)
     engine_no = models.CharField(max_length=50)
