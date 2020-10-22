@@ -119,9 +119,9 @@ class Loan(models.Model):
 class Emi(models.Model):
     client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
     loan_id = models.ForeignKey(Loan, on_delete=models.CASCADE)
-    amt = models.FloatField()
+    amt = models.FloatField(null=True, default=0)
     due_date = models.DateField()
-    paid_data = models.DateField(null=True)
+    paid_date = models.DateField(null=True)
     receipt_no = models.CharField(max_length=20, null=True)
     remarks = models.TextField(null=True)
     penalty = models.IntegerField()
