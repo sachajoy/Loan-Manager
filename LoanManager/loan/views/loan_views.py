@@ -31,7 +31,7 @@ class LoanCreateView(CreateView):
             emi = models.Emi()
             emi.loan_id = loan
             emi.client_id = client
-            emi.amt = loan.emi_amt
+            # emi.amt = loan.emi_amt
             emi.due_date = add_months(loan.agrmnt_date, i)
             emi.penalty = 0
             emi.save()
@@ -48,8 +48,7 @@ class LoanCreateView(CreateView):
                             kwargs={
                                 'client_pk': self.kwargs.get('client_pk'),
                                 'pk': self.object.pk
-                            }
-                            )
+                            })
 
 
 class LoanDetailView(DetailView):

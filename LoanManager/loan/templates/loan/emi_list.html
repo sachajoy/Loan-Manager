@@ -58,10 +58,31 @@
         {% endfor %}
     </div>
     <div style="float:right;">
-        <a href="{% url 'loan:list-emi' client_pk=client.id loan_pk=loan_details.pk %}" class="btn btn-info">EMI
-            Details</a>
+{#        <a href="{% url 'loan:create-loan' client_pk=client.pk %}" class="btn btn-info">EMI Details</a>#}
         <a href="{% url 'loan:create-loan' client_pk=client.pk %}" class="btn btn-info">Print Legder</a>
         {#    <a href="{% url 'loan:create-loan' client_pk=client.pk %}" class="btn btn-info"></a>#}
     </div>
+    <table class="table table-bordered">
+    <tr>
+        <th>No.</th>
+        <th>Amount</th>
+        <th>Due Date</th>
+        <th>Amount</th>
+        <th>Paid Date</th>
+        <th>Receipt No.</th>
+        <th>Remarks</th>
+    </tr>
+        {% for emi in emis %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ loan_details.emi_amt }}</td>
+                <td>{{ emi.due_date }}</td>
+                <td>{{ emi.amt }}</td>
+                <td>{{ emi.paid_date }}</td>
+                <td>{{ emi.receipt_no }}</td>
+                <td>{{ emi.remarks }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}
