@@ -128,3 +128,6 @@ class Emi(models.Model):
 
     def __str__(self):
         return "{} - {}".format(self.due_date, self.loan_id)
+
+    def get_absolute_url(self):
+        return reverse('loan:list-emi')
