@@ -74,7 +74,10 @@
     </tr>
         {% for emi in emis %}
             <tr>
-                <td>{{ forloop.counter }}</td>
+                <td>
+                    {{ forloop.counter }}
+                    <a class="btn btn-facebook" href="{% url 'loan:update-emi' loan_pk=loan_details.pk client_pk=client.pk pk=emi.pk %}">U</a>
+                </td>
                 <td>{{ loan_details.emi_amt }}</td>
                 <td>{{ emi.due_date }}</td>
                 <td>{{ emi.amt }}</td>
