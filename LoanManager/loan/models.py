@@ -93,6 +93,9 @@ class Vehical(models.Model):
     def __str__(self):
         return self.name + ", " + self.company
 
+    def get_absolute_url(self):
+        return reverse('loan:vehical-list')
+
 
 class Loan(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
@@ -119,6 +122,7 @@ class Loan(models.Model):
 class Emi(models.Model):
     client_id = models.ForeignKey(Client, on_delete=models.CASCADE)
     loan_id = models.ForeignKey(Loan, on_delete=models.CASCADE)
+    emi_amt = models.FloatField(null=True, default=0)
     amt = models.FloatField(null=True, default=0)
     due_date = models.DateField()
     paid_date = models.DateField(null=True)

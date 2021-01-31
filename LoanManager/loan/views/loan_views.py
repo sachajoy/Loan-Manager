@@ -31,7 +31,7 @@ class LoanCreateView(CreateView):
             emi = models.Emi()
             emi.loan_id = loan
             emi.client_id = client
-            # emi.amt = loan.emi_amt
+            emi.emi_amt = loan.emi_amt
             emi.due_date = add_months(loan.agrmnt_date, i)
             emi.penalty = 0
             emi.save()

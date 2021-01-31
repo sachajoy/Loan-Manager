@@ -46,7 +46,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{% url 'loan:index' %}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -64,7 +64,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Address</span>
+                <span>Mis</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
@@ -73,6 +73,7 @@
                     <a class="collapse-item" href="{% url 'loan:list-taluka' %}">Taluka</a>
                     <a class="collapse-item" href="{% url 'loan:list-village' %}">Village</a>
                     <a class="collapse-item" href="{% url 'loan:list-faliya' %}">Faliya</a>
+                    <a class="collapse-item" href="{% url 'loan:vehical-list' %}">Vehical</a>
                 </div>
             </div>
         </li>
@@ -91,6 +92,20 @@
                     <a class="collapse-item" href="{% url 'loan:create-client' %}">Create New Client</a>
                     <a class="collapse-item" href="{% url 'loan:create-firm' %}">Create Firm</a>
                     <a class="collapse-item" href="utilities-other.html">Other</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#report"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Reports</span>
+            </a>
+            <div id="report" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+
+                    <a class="collapse-item" href="{% url 'loan:defaulter' %}">Defaulters List</a>
                 </div>
             </div>
         </li>

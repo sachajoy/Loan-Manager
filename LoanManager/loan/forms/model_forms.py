@@ -29,7 +29,6 @@ class TalukaForm(ModelForm):
 
 
 class VillageForm(ModelForm):
-    class VillageForm(ModelForm):
         class Meta:
             model = models.Village
             fields = ['taluka_id', 'name']

@@ -1,0 +1,63 @@
+{% extends 'base_template.html' %}
+{% block content %}
+    <form method="get" action="{% url 'loan:defaulter' %}">
+        {% csrf_token %}
+        <label>Start Date:</label>
+        <input type="date" name="start_date">
+        <label>End Date:</label>
+        <input type="date" name="end_date">
+        <button type="submit">Search</button>
+    </form>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Client List</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Client Name:</th>
+                        <th>Vehical Name:</th>
+                        <th>Address:</th>
+                        <th>Due Date</th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>No.</th>
+                        <th>Client Name:</th>
+                        <th>Vehical Name:</th>
+                        <th>Address:</th>
+                        <th>Due Date</th>
+                        <th>Amount</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for emi in emis %}
+                        <tr>
+                            <td>
+                                {{ forloop.counter }}
+                            </td>
+                            <td>
+                                <a href="{% url 'loan:list-emi' client_pk=emi.client_id.id loan_pk=emi.loan_id.id %}">
+                                    {{ emi.client_id.fname }} {{ emi.client_id.lname }}
+                                </a>
+                            </td>
+                            <td>{{ emi.loan_id.vehical }}</td>
+                            <td>{{ emi.client_id.addr }}, {{ emi.client_id.faliya }}</td>
+                            <td>{{ emi.due_date }}</td>
+                            <td>{{ emi.amt }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

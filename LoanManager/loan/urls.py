@@ -1,6 +1,8 @@
 from django.urls import path
 
-from .views import (address, client_view, emi_views, loan_views, views)
+from .views import (address, client_view,
+                    emi_views, loan_views,
+                    views, reports)
 
 app_name = 'loan'
 urlpatterns = [
@@ -72,4 +74,18 @@ urlpatterns = [
     path('client/<int:client_pk>/loan/<int:loan_pk>/emi/<int:pk>',
          emi_views.EMIUpadateView.as_view(),
          name='update-emi'),
+#     Reports
+    path('defaulters',
+         reports.FetchDefaultersListView.as_view(),
+         name='defaulter'),
+    # Vehical
+    path('create-vehical',
+         address.VehicalCreateView.as_view(),
+         name='vehical-create'),
+    path('list-vehical',
+         address.VehicalListView.as_view(),
+         name='vehical-list'),
+    path('update-vehical/<int:pk>',
+         address.VehicalUpdateView.as_view(),
+         name='vehical-update')
 ]

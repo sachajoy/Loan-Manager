@@ -58,3 +58,20 @@ class FaliyaUpadateView(UpdateView):
 
 class FaliyaListView(ListView):
     model = models.Faliya
+
+
+class VehicalCreateView(CreateView):
+    model = models.Vehical
+    fields = '__all__'
+
+
+class VehicalUpdateView(UpdateView):
+    model = models.Vehical
+    fields = '__all__'
+
+
+
+class VehicalListView(ListView):
+    model = models.Vehical
+
+
